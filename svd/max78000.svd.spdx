@@ -1,0 +1,21 @@
+SPDXVersion: SPDX-2.2
+DataLicense: CC0-1.0
+SPDXID: SPDXRef-DOCUMENT
+DocumentName: max78000.svd SPDX Document
+DocumentNamespace: http://spdx.org/spdxdocs/max78000.svd-4dc7b1e8c690666a8b475207180f6424b67de48850318c21ba928df1c17261b1
+Creator: Organization: SIGPwny
+Created: 2024-12-30T20:33:30Z
+
+##### Package Information #####
+PackageName: max78000.svd
+SPDXID: SPDXRef-Package-max78000.svd
+PackageVersion: N/A
+PackageFileName: max78000.svd
+PackageSupplier: Organization: Analog Devices, Inc.
+PackageDownloadLocation: https://github.com/analogdevicesinc/msdk/blob/1d207201492f5df7d1c3ea154622b02075ba58c3/Libraries/CMSIS/Device/Maxim/MAX78000/Include/max78000.svd
+PackageChecksum: SHA1: 816eeeca26f471f4a63fa4fd2389a1b67714b5df
+PackageChecksum: SHA256: 4dc7b1e8c690666a8b475207180f6424b67de48850318c21ba928df1c17261b1
+FilesAnalyzed: true
+PackageLicenseConcluded: Apache-2.0
+PackageLicenseDeclared: Apache-2.0
+PackageCopyrightText: Copyright 2024 Analog Devices, Inc.

@@ -1,0 +1,23 @@
+[package]
+name = "max78000-pac"
+version = "0.2.0"
+authors = ["SIGPwny <hello@sigpwny.com>"]
+edition = "2021"
+homepage = "https://github.com/sigpwny/max78000-pac"
+repository = "https://github.com/sigpwny/max78000-pac"
+license = "Apache-2.0"
+description = "A Peripheral Access Crate for the MAX78000 microcontroller"
+
+[package.metadata.docs.rs]
+features = ["critical-section", "rt"]
+targets = ["thumbv7em-none-eabi", "thumbv7em-none-eabihf"]
+
+[dependencies]
+cortex-m = "0.7.7"
+cortex-m-rt = { version = "0.7.5", optional = true }
+critical-section = { version = "1.2", optional = true }
+vcell = "0.1.3"
+
+[features]
+critical-section = ["dep:critical-section"]
+rt = ["dep:cortex-m-rt", "cortex-m-rt/device"]

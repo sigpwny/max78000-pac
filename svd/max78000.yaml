@@ -1,0 +1,23 @@
+# Path to the SVD file we're targeting. Relative to this file.
+# This must be included only in the device YAML file.
+_svd: "./max78000.svd"
+
+_modify:
+  # Interrupt value fixes:
+  # - Interrupt values should not include the first 15 IRQs, since those are 
+  #   for ARM Cortex-M4 exceptions.
+  # - Interrupt values are 0-indexed and IRQ numbers are 1-indexed.
+  # - To convert IRQ numbers in the MAX78000 User Guide to interrupt values, 
+  #   subtract the IRQ number by 16.
+  # - Most interrupt values in the SVD file are correct, but some incorrectly 
+  #   use the IRQ number.
+  DMA:
+    interrupts:
+      SPI1:
+        value: 16
+      DMA1:
+        value: 29
+      DMA2:
+        value: 30
+      DMA3:
+        value: 31
