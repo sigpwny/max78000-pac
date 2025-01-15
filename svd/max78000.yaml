@@ -21,3 +21,15 @@ _modify:
         value: 30
       DMA3:
         value: 31
+  # Naming fixes:
+  # - Multiple instances of a peripheral should be named with a number suffix.
+  # - The SVD file sometimes leaves off the instance number for the first
+  #   instance of a peripheral (e.g. "UART" instead of "UART0").
+  PT:
+    name: "PT0"
+  TMR:
+    name: "TMR0"
+  UART:
+    name: "UART0"
+  WDT:
+    name: "WDT0"

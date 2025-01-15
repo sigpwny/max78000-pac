@@ -7339,7 +7339,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>PT</name>
+      <name>PT0</name>
       <description>Pulse Train</description>
       <groupName>Pulse_Train</groupName>
       <baseAddress>0x4003C020</baseAddress>
@@ -7601,17 +7601,17 @@
         </register>
       </registers>
     </peripheral>
-    <peripheral derivedFrom="PT">
+    <peripheral derivedFrom="PT0">
       <name>PT1</name>
       <description>Pulse Train 1</description>
       <baseAddress>0x4003C030</baseAddress>
     </peripheral>
-    <peripheral derivedFrom="PT">
+    <peripheral derivedFrom="PT0">
       <name>PT2</name>
       <description>Pulse Train 2</description>
       <baseAddress>0x4003C040</baseAddress>
     </peripheral>
-    <peripheral derivedFrom="PT">
+    <peripheral derivedFrom="PT0">
       <name>PT3</name>
       <description>Pulse Train 3</description>
       <baseAddress>0x4003C050</baseAddress>
@@ -10491,7 +10491,7 @@
       </interrupt>
     </peripheral>
     <peripheral>
-      <name>TMR</name>
+      <name>TMR0</name>
       <description>Low-Power Configurable Timer</description>
       <baseAddress>0x40010000</baseAddress>
       <addressBlock>
@@ -11152,7 +11152,7 @@
         </register>
       </registers>
     </peripheral>
-    <peripheral derivedFrom="TMR">
+    <peripheral derivedFrom="TMR0">
       <name>TMR1</name>
       <description>Low-Power Configurable Timer 1</description>
       <baseAddress>0x40011000</baseAddress>
@@ -11162,7 +11162,7 @@
         <value>6</value>
       </interrupt>
     </peripheral>
-    <peripheral derivedFrom="TMR">
+    <peripheral derivedFrom="TMR0">
       <name>TMR2</name>
       <description>Low-Power Configurable Timer 2</description>
       <baseAddress>0x40012000</baseAddress>
@@ -11172,7 +11172,7 @@
         <value>7</value>
       </interrupt>
     </peripheral>
-    <peripheral derivedFrom="TMR">
+    <peripheral derivedFrom="TMR0">
       <name>TMR3</name>
       <description>Low-Power Configurable Timer 3</description>
       <baseAddress>0x40013000</baseAddress>
@@ -11182,7 +11182,7 @@
         <value>8</value>
       </interrupt>
     </peripheral>
-    <peripheral derivedFrom="TMR">
+    <peripheral derivedFrom="TMR0">
       <name>TMR4</name>
       <description>Low-Power Configurable Timer 4</description>
       <baseAddress>0x40080C00</baseAddress>
@@ -11192,7 +11192,7 @@
         <value>9</value>
       </interrupt>
     </peripheral>
-    <peripheral derivedFrom="TMR">
+    <peripheral derivedFrom="TMR0">
       <name>TMR5</name>
       <description>Low-Power Configurable Timer 5</description>
       <baseAddress>0x40081000</baseAddress>
@@ -11474,7 +11474,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>UART</name>
+      <name>UART0</name>
       <description>UART Low Power Registers</description>
       <baseAddress>0x40042000</baseAddress>
       <addressBlock>
@@ -11957,23 +11957,23 @@
         </register>
       </registers>
     </peripheral>
-    <peripheral derivedFrom="UART">
+    <peripheral derivedFrom="UART0">
       <name>UART1</name>
       <description>UART Low Power Registers 1</description>
       <baseAddress>0x40043000</baseAddress>
     </peripheral>
-    <peripheral derivedFrom="UART">
+    <peripheral derivedFrom="UART0">
       <name>UART2</name>
       <description>UART Low Power Registers 2</description>
       <baseAddress>0x40044000</baseAddress>
     </peripheral>
-    <peripheral derivedFrom="UART">
+    <peripheral derivedFrom="UART0">
       <name>UART3</name>
       <description>UART Low Power Registers 3</description>
       <baseAddress>0x40081400</baseAddress>
     </peripheral>
     <peripheral>
-      <name>WDT</name>
+      <name>WDT0</name>
       <description>Windowed Watchdog Timer</description>
       <baseAddress>0x40003000</baseAddress>
       <addressBlock>
@@ -12562,7 +12562,7 @@
         </register>
       </registers>
     </peripheral>
-    <peripheral derivedFrom="WDT">
+    <peripheral derivedFrom="WDT0">
       <name>WDT1</name>
       <description>Windowed Watchdog Timer 1</description>
       <baseAddress>0x40080800</baseAddress>
