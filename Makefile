@@ -9,6 +9,7 @@ patch:
 # Generate Rust code from the SVD file
 generate:
 	svd2rust --target=cortex-m --reexport-core-peripherals -i svd/$(TARGET).svd.patched -o .
+	rm -r src
 	form -i lib.rs -o src/
 	rm lib.rs
 
