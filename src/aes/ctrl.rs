@@ -99,10 +99,79 @@ where
         self.variant(KeySize::Aes256)
     }
 }
+#[doc = "Encryption Type Selection\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[repr(u8)]
+pub enum Type {
+    #[doc = "0: Encryption using the external AES key."]
+    EncExt = 0,
+    #[doc = "1: Decryption using the external AES key."]
+    DecExt = 1,
+    #[doc = "2: Decryption using the locally generated decryption key."]
+    DecInt = 2,
+}
+impl From<Type> for u8 {
+    #[inline(always)]
+    fn from(variant: Type) -> Self {
+        variant as _
+    }
+}
+impl crate::FieldSpec for Type {
+    type Ux = u8;
+}
+impl crate::IsEnum for Type {}
 #[doc = "Field `TYPE` reader - Encryption Type Selection"]
-pub type TypeR = crate::FieldReader;
+pub type TypeR = crate::FieldReader<Type>;
+impl TypeR {
+    #[doc = "Get enumerated values variant"]
+    #[inline(always)]
+    pub const fn variant(&self) -> Option<Type> {
+        match self.bits {
+            0 => Some(Type::EncExt),
+            1 => Some(Type::DecExt),
+            2 => Some(Type::DecInt),
+            _ => None,
+        }
+    }
+    #[doc = "Encryption using the external AES key."]
+    #[inline(always)]
+    pub fn is_enc_ext(&self) -> bool {
+        *self == Type::EncExt
+    }
+    #[doc = "Decryption using the external AES key."]
+    #[inline(always)]
+    pub fn is_dec_ext(&self) -> bool {
+        *self == Type::DecExt
+    }
+    #[doc = "Decryption using the locally generated decryption key."]
+    #[inline(always)]
+    pub fn is_dec_int(&self) -> bool {
+        *self == Type::DecInt
+    }
+}
 #[doc = "Field `TYPE` writer - Encryption Type Selection"]
-pub type TypeW<'a, REG> = crate::FieldWriter<'a, REG, 2>;
+pub type TypeW<'a, REG> = crate::FieldWriter<'a, REG, 2, Type>;
+impl<'a, REG> TypeW<'a, REG>
+where
+    REG: crate::Writable + crate::RegisterSpec,
+    REG::Ux: From<u8>,
+{
+    #[doc = "Encryption using the external AES key."]
+    #[inline(always)]
+    pub fn enc_ext(self) -> &'a mut crate::W<REG> {
+        self.variant(Type::EncExt)
+    }
+    #[doc = "Decryption using the external AES key."]
+    #[inline(always)]
+    pub fn dec_ext(self) -> &'a mut crate::W<REG> {
+        self.variant(Type::DecExt)
+    }
+    #[doc = "Decryption using the locally generated decryption key."]
+    #[inline(always)]
+    pub fn dec_int(self) -> &'a mut crate::W<REG> {
+        self.variant(Type::DecInt)
+    }
+}
 impl R {
     #[doc = "Bit 0 - AES Enable"]
     #[inline(always)]
