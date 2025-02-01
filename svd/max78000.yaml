@@ -33,7 +33,8 @@ _modify:
     name: "UART0"
   WDT:
     name: "WDT0"
-# Add AES type to control register
+
+# Add enum values for TYPE in the AES_CTRL register
 AES:
   CTRL:
     TYPE:
