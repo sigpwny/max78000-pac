@@ -10487,7 +10487,7 @@
       <interrupt>
         <name>SPI1</name>
         <description>SPI1 IRQ</description>
-        <value>32</value>
+        <value>16</value>
       </interrupt>
     </peripheral>
     <peripheral>

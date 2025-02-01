@@ -11,10 +11,12 @@ _modify:
   #   subtract the IRQ number by 16.
   # - Most interrupt values in the SVD file are correct, but some incorrectly 
   #   use the IRQ number.
-  DMA:
+  SPI1:
     interrupts:
       SPI1:
         value: 16
+  DMA:
+    interrupts:
       DMA1:
         value: 29
       DMA2:
