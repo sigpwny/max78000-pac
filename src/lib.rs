@@ -25,6 +25,7 @@ extern "C" {
     fn TMR4();
     fn TMR5();
     fn I2C0();
+    fn SPI1();
     fn ADC();
     fn Flash_Controller();
     fn GPIO0();
@@ -34,7 +35,6 @@ extern "C" {
     fn DMA1();
     fn DMA2();
     fn DMA3();
-    fn SPI1();
     fn I2C1();
     fn Wakeup_Timer();
     fn SPI0();
@@ -74,7 +74,7 @@ pub static __INTERRUPTS: [Vector; 104] = [
     Vector { _handler: I2C0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector { _handler: SPI1 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -92,7 +92,7 @@ pub static __INTERRUPTS: [Vector; 104] = [
     Vector { _handler: DMA1 },
     Vector { _handler: DMA2 },
     Vector { _handler: DMA3 },
-    Vector { _handler: SPI1 },
+    Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -191,6 +191,8 @@ pub enum Interrupt {
     TMR5 = 10,
     #[doc = "13 - I2C0 IRQ"]
     I2C0 = 13,
+    #[doc = "16 - SPI1 IRQ"]
+    SPI1 = 16,
     #[doc = "20 - ADC IRQ"]
     ADC = 20,
     #[doc = "23 - Flash Controller interrupt."]
@@ -209,8 +211,6 @@ pub enum Interrupt {
     DMA2 = 30,
     #[doc = "31 - DMA3"]
     DMA3 = 31,
-    #[doc = "32 - SPI1 IRQ"]
-    SPI1 = 32,
     #[doc = "36 - I2C1 IRQ"]
     I2C1 = 36,
     #[doc = "53 - WUT IRQ"]
