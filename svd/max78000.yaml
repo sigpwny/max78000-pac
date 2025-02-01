@@ -35,3 +35,11 @@ _modify:
     name: "UART0"
   WDT:
     name: "WDT0"
+
+# Add enum values for TYPE in the AES_CTRL register
+AES:
+  CTRL:
+    TYPE:
+      ENC_EXT: [0, "Encryption using the external AES key."]
+      DEC_EXT: [1, "Decryption using the external AES key."]
+      DEC_INT: [2, "Decryption using the locally generated decryption key."]

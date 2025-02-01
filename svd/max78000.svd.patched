@@ -440,6 +440,24 @@
               <description>Encryption Type Selection</description>
               <bitRange>[9:8]</bitRange>
               <access>read-write</access>
+              <enumeratedValues>
+                <name>TYPE</name>
+                <enumeratedValue>
+                  <name>ENC_EXT</name>
+                  <description>Encryption using the external AES key.</description>
+                  <value>0</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DEC_EXT</name>
+                  <description>Decryption using the external AES key.</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>DEC_INT</name>
+                  <description>Decryption using the locally generated decryption key.</description>
+                  <value>2</value>
+                </enumeratedValue>
+              </enumeratedValues>
             </field>
           </fields>
         </register>
