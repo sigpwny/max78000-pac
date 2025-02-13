@@ -15,19 +15,21 @@ use generic::*;
 pub mod generic;
 #[cfg(feature = "rt")]
 extern "C" {
-    fn WWDT();
+    fn WDT0();
     fn RTC();
     fn TRNG();
-    fn TMR();
+    fn TMR0();
     fn TMR1();
     fn TMR2();
     fn TMR3();
     fn TMR4();
     fn TMR5();
     fn I2C0();
+    fn UART0();
+    fn UART1();
     fn SPI1();
     fn ADC();
-    fn Flash_Controller();
+    fn FLC0();
     fn GPIO0();
     fn GPIO1();
     fn GPIO2();
@@ -35,15 +37,18 @@ extern "C" {
     fn DMA1();
     fn DMA2();
     fn DMA3();
+    fn UART2();
     fn I2C1();
-    fn Wakeup_Timer();
+    fn WUT();
     fn SPI0();
     fn WDT1();
     fn PT();
     fn I2C2();
-    fn OneWire();
+    fn OWM();
     fn DVS();
-    fn CameraIF();
+    fn UART3();
+    fn PCIF();
+    fn AES();
     fn I2S();
     fn LPCMP();
 }
@@ -59,11 +64,11 @@ pub union Vector {
 #[no_mangle]
 pub static __INTERRUPTS: [Vector; 104] = [
     Vector { _reserved: 0 },
-    Vector { _handler: WWDT },
+    Vector { _handler: WDT0 },
     Vector { _reserved: 0 },
     Vector { _handler: RTC },
     Vector { _handler: TRNG },
-    Vector { _handler: TMR },
+    Vector { _handler: TMR0 },
     Vector { _handler: TMR1 },
     Vector { _handler: TMR2 },
     Vector { _handler: TMR3 },
@@ -72,8 +77,8 @@ pub static __INTERRUPTS: [Vector; 104] = [
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _handler: I2C0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector { _handler: UART0 },
+    Vector { _handler: UART1 },
     Vector { _handler: SPI1 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -81,9 +86,7 @@ pub static __INTERRUPTS: [Vector; 104] = [
     Vector { _handler: ADC },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector {
-        _handler: Flash_Controller,
-    },
+    Vector { _handler: FLC0 },
     Vector { _handler: GPIO0 },
     Vector { _handler: GPIO1 },
     Vector { _handler: GPIO2 },
@@ -94,7 +97,7 @@ pub static __INTERRUPTS: [Vector; 104] = [
     Vector { _handler: DMA3 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector { _handler: UART2 },
     Vector { _reserved: 0 },
     Vector { _handler: I2C1 },
     Vector { _reserved: 0 },
@@ -113,9 +116,7 @@ pub static __INTERRUPTS: [Vector; 104] = [
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector {
-        _handler: Wakeup_Timer,
-    },
+    Vector { _handler: WUT },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _handler: SPI0 },
@@ -129,7 +130,7 @@ pub static __INTERRUPTS: [Vector; 104] = [
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _handler: OneWire },
+    Vector { _handler: OWM },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -150,16 +151,16 @@ pub static __INTERRUPTS: [Vector; 104] = [
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
+    Vector { _handler: UART3 },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector { _handler: PCIF },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _handler: CameraIF },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector { _handler: AES },
     Vector { _reserved: 0 },
     Vector { _handler: I2S },
     Vector { _reserved: 0 },
@@ -171,14 +172,14 @@ pub static __INTERRUPTS: [Vector; 104] = [
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 #[repr(u16)]
 pub enum Interrupt {
-    #[doc = "1 - WWDT"]
-    WWDT = 1,
+    #[doc = "1 - WDT0"]
+    WDT0 = 1,
     #[doc = "3 - RTC interrupt."]
     RTC = 3,
     #[doc = "4 - TRNG interrupt."]
     TRNG = 4,
-    #[doc = "5 - TMR"]
-    TMR = 5,
+    #[doc = "5 - TMR0"]
+    TMR0 = 5,
     #[doc = "6 - TMR1 IRQ"]
     TMR1 = 6,
     #[doc = "7 - TMR2 IRQ"]
@@ -191,12 +192,16 @@ pub enum Interrupt {
     TMR5 = 10,
     #[doc = "13 - I2C0 IRQ"]
     I2C0 = 13,
+    #[doc = "14 - UART0"]
+    UART0 = 14,
+    #[doc = "15 - UART1"]
+    UART1 = 15,
     #[doc = "16 - SPI1 IRQ"]
     SPI1 = 16,
     #[doc = "20 - ADC IRQ"]
     ADC = 20,
     #[doc = "23 - Flash Controller interrupt."]
-    Flash_Controller = 23,
+    FLC0 = 23,
     #[doc = "24 - GPIO0 interrupt."]
     GPIO0 = 24,
     #[doc = "25 - GPIO1 IRQ"]
@@ -211,10 +216,12 @@ pub enum Interrupt {
     DMA2 = 30,
     #[doc = "31 - DMA3"]
     DMA3 = 31,
+    #[doc = "34 - UART2"]
+    UART2 = 34,
     #[doc = "36 - I2C1 IRQ"]
     I2C1 = 36,
     #[doc = "53 - WUT IRQ"]
-    Wakeup_Timer = 53,
+    WUT = 53,
     #[doc = "56 - SPI0"]
     SPI0 = 56,
     #[doc = "57 - WDT1 IRQ"]
@@ -223,12 +230,16 @@ pub enum Interrupt {
     PT = 59,
     #[doc = "62 - I2C2 IRQ"]
     I2C2 = 62,
-    #[doc = "67 - OneWire"]
-    OneWire = 67,
+    #[doc = "67 - OWM"]
+    OWM = 67,
     #[doc = "83 - Dynamic Voltage Scaling Interrupt"]
     DVS = 83,
-    #[doc = "91 - CameraIF"]
-    CameraIF = 91,
+    #[doc = "88 - UART3"]
+    UART3 = 88,
+    #[doc = "91 - PCIF"]
+    PCIF = 91,
+    #[doc = "97 - AES"]
+    AES = 97,
     #[doc = "99 - I2S IRQ"]
     I2S = 99,
     #[doc = "103 - Low Power Comparato"]

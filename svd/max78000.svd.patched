@@ -369,6 +369,10 @@
         <size>0x400</size>
         <usage>registers</usage>
       </addressBlock>
+      <interrupt>
+        <name>AES</name>
+        <value>97</value>
+      </interrupt>
       <registers>
         <register>
           <name>CTRL</name>
@@ -659,7 +663,7 @@
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>CameraIF</name>
+        <name>PCIF</name>
         <value>91</value>
       </interrupt>
       <registers>
@@ -2510,7 +2514,7 @@
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>Flash_Controller</name>
+        <name>FLC0</name>
         <description>Flash Controller interrupt.</description>
         <value>23</value>
       </interrupt>
@@ -7141,7 +7145,7 @@
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>OneWire</name>
+        <name>OWM</name>
         <value>67</value>
       </interrupt>
       <registers>
@@ -10518,7 +10522,7 @@
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>TMR</name>
+        <name>TMR0</name>
         <value>5</value>
       </interrupt>
       <registers>
@@ -11500,6 +11504,10 @@
         <size>0x1000</size>
         <usage>registers</usage>
       </addressBlock>
+      <interrupt>
+        <name>UART0</name>
+        <value>14</value>
+      </interrupt>
       <registers>
         <register>
           <name>CTRL</name>
@@ -11979,16 +11987,28 @@
       <name>UART1</name>
       <description>UART Low Power Registers 1</description>
       <baseAddress>0x40043000</baseAddress>
+      <interrupt>
+        <name>UART1</name>
+        <value>15</value>
+      </interrupt>
     </peripheral>
     <peripheral derivedFrom="UART0">
       <name>UART2</name>
       <description>UART Low Power Registers 2</description>
       <baseAddress>0x40044000</baseAddress>
+      <interrupt>
+        <name>UART2</name>
+        <value>34</value>
+      </interrupt>
     </peripheral>
     <peripheral derivedFrom="UART0">
       <name>UART3</name>
       <description>UART Low Power Registers 3</description>
       <baseAddress>0x40081400</baseAddress>
+      <interrupt>
+        <name>UART3</name>
+        <value>88</value>
+      </interrupt>
     </peripheral>
     <peripheral>
       <name>WDT0</name>
@@ -12000,7 +12020,7 @@
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>WWDT</name>
+        <name>WDT0</name>
         <value>1</value>
       </interrupt>
       <registers>
@@ -12600,7 +12620,7 @@
         <usage>registers</usage>
       </addressBlock>
       <interrupt>
-        <name>Wakeup_Timer</name>
+        <name>WUT</name>
         <description>WUT IRQ</description>
         <value>53</value>
       </interrupt>

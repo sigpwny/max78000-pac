@@ -4,13 +4,10 @@ _svd: "./max78000.svd"
 
 _modify:
   # Interrupt value fixes:
-  # - Interrupt values should not include the first 15 IRQs, since those are 
-  #   for ARM Cortex-M4 exceptions.
+  # - Interrupt values should not include the first 15 IRQs, since those are for ARM Cortex-M4 exceptions.
   # - Interrupt values are 0-indexed and IRQ numbers are 1-indexed.
-  # - To convert IRQ numbers in the MAX78000 User Guide to interrupt values, 
-  #   subtract the IRQ number by 16.
-  # - Most interrupt values in the SVD file are correct, but some incorrectly 
-  #   use the IRQ number.
+  # - To convert IRQ numbers in the MAX78000 User Guide to interrupt values, subtract the IRQ number by 16.
+  # - Most interrupt values in the SVD file are correct, but some incorrectly use the IRQ number.
   SPI1:
     interrupts:
       SPI1:
@@ -25,21 +22,70 @@ _modify:
         value: 31
   # Naming fixes:
   # - Multiple instances of a peripheral should be named with a number suffix.
-  # - The SVD file sometimes leaves off the instance number for the first
-  #   instance of a peripheral (e.g. "UART" instead of "UART0").
+  # - The SVD file sometimes leaves off the instance number for the first instance of a peripheral (e.g. "UART" instead of "UART0").
+  # - Some interrupt names are also inaccurate compared to the User Guide.
+  CAMERAIF:
+    interrupts:
+      CameraIF:
+        name: "PCIF"
+  FLC:
+    interrupts:
+      Flash_Controller:
+        name: "FLC0"
+  OWM:
+    interrupts:
+      OneWire:
+        name: "OWM"
   PT:
     name: "PT0"
   TMR:
     name: "TMR0"
+    interrupts:
+      TMR:
+        name: "TMR0"
   UART:
     name: "UART0"
   WDT:
     name: "WDT0"
+    interrupts:
+      WWDT:
+        name: "WDT0"
+  WUT:
+    interrupts:
+      Wakeup_Timer:
+        name: "WUT"
 
-# Add enum values for TYPE in the AES_CTRL register
 AES:
+  # Add enum values for TYPE in the AES_CTRL register
   CTRL:
     TYPE:
       ENC_EXT: [0, "Encryption using the external AES key."]
       DEC_EXT: [1, "Decryption using the external AES key."]
       DEC_INT: [2, "Decryption using the locally generated decryption key."]
+  # Add missing interrupt for AES peripheral
+  _add:
+    _interrupts:
+      AES:
+        value: 97
+
+# Add missing interrupts for UART peripherals
+UART0:
+  _add:
+    _interrupts:
+      UART0:
+        value: 14
+UART1:
+  _add:
+    _interrupts:
+      UART1:
+        value: 15
+UART2:
+  _add:
+    _interrupts:
+      UART2:
+        value: 34
+UART3:
+  _add:
+    _interrupts:
+      UART3:
+        value: 88
